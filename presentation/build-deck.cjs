@@ -1,6 +1,7 @@
 const PptxGenJS = require('pptxgenjs');
 const path = require('path');
 
+const DEMO_URL = 'https://protoype-b7i8ckokl-avnish12.vercel.app';
 const OUT = '/home/avnish/DQms/voice-fill-prototype/DQMS-Voice-Fill-Prototype.pptx';
 const SHOTS = '/home/avnish/DQms/voice-fill-prototype/presentation/screens';
 const shot = (n) => path.join(SHOTS, n);
@@ -70,6 +71,10 @@ function screenshot(s, file, x, y, w) {
   s.addText('Hands-free quality records: the QA executive speaks the readings, AI fills the form, the executive confirms.', { x: 0.9, y: 3.15, w: 10.5, h: 1.0, fontFace: FONT, fontSize: 22, color: 'C9C9CF' });
   s.addText('Demonstrated on the real Kinley form “Treated Water Analysis Record” (WA-FRM-1105-1.0.0.8)', { x: 0.9, y: 5.6, w: 11, h: 0.4, fontFace: FONT, fontSize: 14, color: '9A9AA2' });
   s.addText('October 2026', { x: 0.9, y: 6.05, w: 6, h: 0.4, fontFace: FONT, fontSize: 14, color: '9A9AA2' });
+  s.addText([
+    { text: 'Try it: ', options: { color: 'C9C9CF' } },
+    { text: DEMO_URL.replace('https://', ''), options: { color: 'FFFFFF', bold: true, hyperlink: { url: DEMO_URL, tooltip: 'Open the live prototype' } } },
+  ], { x: 0.9, y: 4.35, w: 11, h: 0.5, fontFace: FONT, fontSize: 18 });
 }
 
 // 2 — The problem
@@ -277,6 +282,22 @@ function screenshot(s, file, x, y, w) {
     s.addText(t, { x: 1.35, y, w: 3.0, h: 0.66, valign: 'middle', fontFace: FONT, fontSize: 17, bold: true, color: C.ink });
     s.addText(b, { x: 4.3, y, w: 8.4, h: 0.66, valign: 'middle', fontFace: FONT, fontSize: 15, color: C.muted });
   });
+}
+
+// 13 — Try it yourself
+{
+  const s = base('Try the prototype yourself', 'Live demo');
+  s.addShape(pptx.ShapeType.roundRect, { x: 0.6, y: 1.65, w: 12.1, h: 1.35, fill: { color: C.dark }, line: { color: C.dark }, rectRadius: 0.14 });
+  s.addText('Open in Chrome or Edge, on a laptop, tablet or phone', { x: 0.95, y: 1.75, w: 11.4, h: 0.4, fontFace: FONT, fontSize: 14, color: 'B9B9BF' });
+  s.addText(DEMO_URL, { x: 0.95, y: 2.15, w: 11.4, h: 0.7, fontFace: FONT, fontSize: 30, bold: true, color: 'FFFFFF', hyperlink: { url: DEMO_URL, tooltip: 'Open the live prototype' } });
+  const steps = [
+    ['Open the link', 'Allow the microphone when the browser asks.'],
+    ['Enter the code', 'Asked once, the first time the AI is used. Ask the project team for it.'],
+    ['Hold mic & speak', '“Round 1, time 10:30, chlorine zero, turbidity 0.18, pH 6.8, TDS 410.” Or click a “Try” phrase.'],
+    ['Review and accept', 'Tick the values that are right. They fill the form with a mic badge; check the Voice capture log.'],
+  ];
+  steps.forEach(([t, b], i) => card(s, 0.6 + i * 3.07, 3.35, 2.9, 2.75, { num: i + 1, title: t, body: b, accent: i === 3 ? C.red : C.ai }));
+  s.addText('Each visitor gets a private sandbox: entries stay in their own browser and are never shared. “Reset demo” clears them.', { x: 0.6, y: 6.3, w: 12.1, h: 0.45, fontFace: FONT, fontSize: 13, color: C.muted, italic: true });
 }
 
 pptx.writeFile({ fileName: OUT }).then((f) => console.log('wrote', f));
