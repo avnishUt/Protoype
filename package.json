@@ -1,0 +1,15 @@
+{
+  "name": "dqms-voice-fill-prototype",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Prototype: an executive speaks readings, Claude maps them onto a DQMS form, the executive confirms.",
+  "type": "module",
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server.mjs",
+    "dev": "node --watch --env-file-if-exists=.env server.mjs"
+  },
+  "engines": { "node": ">=20.12" },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.135.0"
+  }
+}
