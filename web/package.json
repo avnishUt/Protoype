@@ -1,0 +1,21 @@
+{
+  "name": "dqms-voice-fill",
+  "version": "0.2.0",
+  "private": true,
+  "description": "DQMS Voice Fill prototype: React (Vite) front end + one Vercel serverless function for Claude.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.135.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.1.2",
+    "vite": "^8.3.5"
+  }
+}
