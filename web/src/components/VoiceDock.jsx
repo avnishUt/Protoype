@@ -62,7 +62,7 @@ export function VoiceDock({ engine, disabled, onTranscript, onToast }) {
     onTranscript(text);
   };
 
-  let live = <span className="hint">Hold the mic (or hold <kbd>Space</kbd>) and speak the readings</span>;
+  let live = <span className="hint">Hold the mic<span className="desktop-only"> (or hold <kbd>Space</kbd>)</span> and speak the readings</span>;
   if (speech.listening) {
     live =
       speech.finalText || speech.interim ? (
@@ -119,7 +119,7 @@ export function VoiceDock({ engine, disabled, onTranscript, onToast }) {
                 placeholder="…or type what you'd say, e.g. round 2 time 14:30 turbidity 0.4 pH 6.5"
                 autoComplete="off"
               />
-              <button className="secondary" type="submit">
+              <button className="btn btn-outline" type="submit">
                 Send
               </button>
             </form>

@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { FORM, emptyState } from './lib/form.js';
 import { load, save } from './lib/storage.js';
 import { getConfig, voiceFill } from './lib/api.js';
-import { Sidebar, Topbar, Explainer } from './components/Layout.jsx';
+import { Header, Explainer } from './components/Layout.jsx';
 import { FormView, cellId } from './components/FormView.jsx';
 import { VoiceDock } from './components/VoiceDock.jsx';
 import { ReviewDialog } from './components/ReviewDialog.jsx';
@@ -10,6 +10,7 @@ import { AuditDrawer } from './components/AuditDrawer.jsx';
 
 // The demo user. In DQMS this is the logged-in executive from the JWT.
 const USER = { id: 'u-1042', name: 'R. Sharma', role: 'QA Executive' };
+const PLANT_NAME = 'Dasna Plant';
 const PROMPT_VERSION = 'vf-2026-10-19';
 const newRecord = () => ({ id: 'REC-2026-0147', ...emptyState() });
 
@@ -144,10 +145,9 @@ export default function App() {
 
   return (
     <>
-      <div className="app">
-        <Sidebar />
-        <main>
-          <Topbar form={FORM} user={USER} captureCount={captures.length} onOpenLog={() => setDrawerOpen(true)} />
+      <div className="shell">
+        <Header user={USER} plantName={PLANT_NAME} onComingSoon={(what) => showToast(`${what} is part of the full DQMS app, not this prototype.`)} />
+        <main className="page">
           {!explainerHidden && (
             <Explainer
               onClose={() => {
@@ -156,24 +156,32 @@ export default function App() {
               }}
             />
           )}
-          <section className="record-head">
-            <div>
-              <h1>{FORM.name}</h1>
-              <div className="meta">
-                <span>{FORM.formCode}</span>
-                <span className="dot">•</span>
-                <span>{FORM.line}</span>
-                <span className="dot">•</span>
-                <span>{record.id}</span>
+          <section className="fill-head">
+            <div className="fill-head-left">
+              <button className="btn btn-outline btn-sm" type="button" onClick={() => showToast('Back goes to My Forms in the full app.')}>
+                <svg className="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="m15 18-6-6 6-6" />
+                </svg>
+                Back
+              </button>
+              <div className="fill-title">
+                <h1>{FORM.name}</h1>
+                <div className="fill-meta">
+                  <span className="mono">{FORM.formCode}</span>
+                  <span className="chip">Record No. {record.id.split('-').pop().replace(/^0+/, '')}</span>
+                  <span className={`badge${locked ? ' submitted' : ''}`}>{locked ? `Submitted by ${record.submittedBy}` : 'Draft'}</span>
+                </div>
               </div>
             </div>
-            <div className="record-actions">
-              <span className={`badge${locked ? ' submitted' : ''}`}>{locked ? `Submitted by ${record.submittedBy}` : 'Draft'}</span>
-              <button className="ghost" type="button" onClick={reset}>
+            <div className="fill-actions">
+              <button className="btn btn-outline btn-sm" type="button" onClick={() => setDrawerOpen(true)}>
+                Voice log <span className="count">{captures.length}</span>
+              </button>
+              <button className="btn btn-ghost btn-sm" type="button" onClick={reset}>
                 Reset demo
               </button>
               <button
-                className="secondary"
+                className="btn btn-outline btn-sm"
                 type="button"
                 disabled={locked}
                 onClick={() => {
@@ -183,7 +191,7 @@ export default function App() {
               >
                 Save draft
               </button>
-              <button className="primary" type="button" disabled={locked} onClick={submit}>
+              <button className="btn btn-primary btn-sm" type="button" disabled={locked} onClick={submit}>
                 Submit
               </button>
             </div>

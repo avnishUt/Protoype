@@ -120,7 +120,7 @@ export function FormView({ form, record, activeRow, flash, locked, onCellChange,
                     'Say "round 2…" to target a row, or click a round number.'
                   )}
                 </span>
-                <button className="secondary" type="button" disabled={data.length >= block.maxRows || locked} onClick={() => onAddRow(block.key)}>
+                <button className="btn btn-outline btn-sm" type="button" disabled={data.length >= block.maxRows || locked} onClick={() => onAddRow(block.key)}>
                   + Add round
                 </button>
               </div>

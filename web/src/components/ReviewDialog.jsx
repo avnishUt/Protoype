@@ -103,10 +103,10 @@ export function ReviewDialog({ proposal, onClose }) {
         <footer>
           <small>Nothing is saved until you accept. Accepted values go into the draft; submitting stays manual.</small>
           <div>
-            <button className="ghost" type="button" onClick={() => finish(false)}>
+            <button className="btn btn-ghost" type="button" onClick={() => finish(false)}>
               Discard
             </button>
-            <button className="primary" type="button" disabled={n === 0} onClick={() => finish(true)}>
+            <button className="btn btn-primary" type="button" disabled={n === 0} onClick={() => finish(true)}>
               {n ? `Accept ${n} value${n === 1 ? '' : 's'}` : 'Accept selected'}
             </button>
           </div>
