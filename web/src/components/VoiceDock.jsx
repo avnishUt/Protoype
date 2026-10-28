@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useSpeech } from '../lib/useSpeech.js';
 
 export const SAMPLES = [
-  'Date today. Round 1, time 10:30, chlorine zero, turbidity 0.18, M alk 72, pH 6.8, TDS 410',
+  'Date today. Round 1, time 10:30, chlorine zero, turbidity 0.18, pH 6.8, TDS 410',
   'Round 2 time 2:30 pm turbidity point four, p h six point five, TDS four hundred twenty',
   'Total hardness 85, calcium hardness 60, chlorides 120, iron 0.05',
   'Round 1 pH 7.2, no sorry 7.4',

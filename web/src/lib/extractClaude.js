@@ -40,7 +40,7 @@ Form: ${FORM.name} (${FORM.formCode}), ${FORM.line}.
 ${formSpecText()}
 
 How to read the transcript:
-- It comes from speech-to-text, often Indian English or Hinglish, and may contain recognition errors ("p h" = pH, "tea ds" = TDS, "em alk" = M-Alk, "point" = decimal point, "zero point two" = 0.2, "das" = 10).
+- It comes from speech-to-text, often Indian English or Hinglish, and may contain recognition errors ("p h" = pH, "tea ds" = TDS, "point" = decimal point, "zero point two" = 0.2, "das" = 10).
 - Propose a value only for a field the speaker actually gave a value for. Never infer, average, round, or fill a field that was not spoken. If something sounds like a reading but you can't tell which field it belongs to, put that phrase in "unrecognized" instead of guessing.
 - value: digits only for decimals ("0.2", "10.8"), "HH:MM" 24-hour or "now" for time, "YYYY-MM-DD" or "today"/"yesterday" for date. Never add units.
 - Grid rows: if the speaker names a round/row/reading ("round 2", "second reading", "dusra round"), use that number. If they give a time that matches an existing row's time, use that row. Otherwise use the default row given in the current state.

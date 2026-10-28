@@ -6,7 +6,7 @@ const MIC_SVG =
   '<svg class="vbadge" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V6a3 3 0 0 0-3-3Z" fill="currentColor"/><path d="M5.5 11.5a6.5 6.5 0 0 0 13 0M12 18v3"/></svg>';
 
 const SAMPLES = [
-  'Date today. Round 1, time 10:30, chlorine zero, turbidity 0.18, M alk 72, pH 6.8, TDS 410',
+  'Date today. Round 1, time 10:30, chlorine zero, turbidity 0.18, pH 6.8, TDS 410',
   'Round 2 time 2:30 pm turbidity point four, p h six point five, TDS four hundred twenty',
   'Total hardness 85, calcium hardness 60, chlorides 120, iron 0.05',
   'Round 1 pH 7.2, no sorry 7.4',

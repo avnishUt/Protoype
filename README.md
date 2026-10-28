@@ -25,7 +25,7 @@ If the AI call fails during a demo (no network, bad key), the app automatically 
 
 1. **Set the scene.** Paper-to-digital is done. The executive still types every reading on a tablet, with gloves on, next to a filler.
 2. **Hold the mic** (or hold <kbd>Space</kbd>) and say:
-   *"Date today. Round 1, time 10:30, chlorine zero, turbidity 0.18, M alk 72, pH 6.8, TDS 410."*
+   *"Date today. Round 1, time 10:30, chlorine zero, turbidity 0.18, pH 6.8, TDS 410."*
    The review dialog lists each value, the words it was heard from, and its spec check. Click **Accept**. The cells fill and get a mic badge.
 3. **Show the safety net.** Say: *"Round 2, time 2:30 pm, turbidity point four, pH six point five, TDS four hundred twenty."*
    Turbidity 0.4 is flagged **Above spec (max 0.3)** before it's accepted.
